@@ -79,7 +79,7 @@ def get_answer(context, question):
     return res
 
 def hf_llm_qa(query):
-    matching_docs = vectordb.similarity_search_with_score(query,k=4) #similarity_search(query)
+    matching_docs = vectordb.similarity_search_with_score(query,k=2) #similarity_search(query)
     # st.write(matching_docs)
     # matching_docs
     answer = get_answer(matching_docs,query)

@@ -64,13 +64,13 @@ def get_answer(context, question):
     
     # client = InferenceClient(model="meta-llama/Llama-2-7b-chat-hf", token=HF_TOKEN)
     res = "Response is empty"
-    try:
-        res = client.text_generation(f"Use the following pieces of context to answer the user's question, User's question is:{question} and Context is :{context}.", max_new_tokens=200)
-        st.write("context is :",context)
-        st.write("Question is :", question)
-        st.write("result is :", res)
-    except:
-        st.error('This is beyond the capability of the model to answer this right now.', icon="🚨")
+    # try:
+    res = client.text_generation(f"Use the following pieces of context to answer the user's question, User's question is:{question} and Context is :{context}.", max_new_tokens=200)
+    st.write("context is :",context)
+    st.write("Question is :", question)
+    st.write("result is :", res)
+    # except:
+    #     st.error('This is beyond the capability of the model to answer this right now.', icon="🚨")
         
     return res
 

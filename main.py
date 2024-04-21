@@ -103,7 +103,7 @@ def main():
         # Display the result
         st.write('Response:')
 
-        st.write(result.lower())
+        st.write(result)
 
 if __name__ == '__main__':
     main()

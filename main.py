@@ -14,7 +14,7 @@ import os
 # load_dotenv()
 
 # HF_TOKEN = os.getenv("HF_TOKEN")
-HF_TOKEN = os.getenv("HF_TOKEN")
+# HF_TOKEN = os.getenv("HF_TOKEN")
 # OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 embeddings = SentenceTransformerEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")# "sentence-transformers/all-mpnet-base-v2")
 
@@ -25,6 +25,7 @@ embeddings = SentenceTransformerEmbeddings(model_name="sentence-transformers/all
 
 ################################################ Install if using hf
 from huggingface_hub import InferenceClient
+HF_TOKEN = "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"
 client = InferenceClient("HuggingFaceH4/zephyr-7b-beta", token= HF_TOKEN)
 
 

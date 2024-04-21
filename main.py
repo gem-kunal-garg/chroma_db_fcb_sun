@@ -1,5 +1,4 @@
 import streamlit as st
-import logging
 # from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 # from langchain.vectorstores import Chroma
@@ -68,11 +67,11 @@ def get_answer(context, question):
     res = "Response is empty"
     # try:
     res = client.text_generation(f"Use the following pieces of context to answer the user's question, User's question is:{question} and Context is :{context}.", max_new_tokens=200)
-    # st.write("context is :",context)
+    st.write("context is :",context)
     # st.write("Question is :", question)
     # st.write("result is :", res)
-    print("THis is Get Answer function")
-    logging.info("THis is get answer function from logging")
+    # print("THis is Get Answer function")
+    # logging.info("THis is get answer function from logging")
     
     # except:
     #     st.error('This is beyond the capability of the model to answer this right now.', icon="🚨")
@@ -80,7 +79,7 @@ def get_answer(context, question):
     return res
 
 def hf_llm_qa(query):
-    matching_docs = vectordb.similarity_search_with_score(query,k=2) #similarity_search(query)
+    matching_docs = vectordb.similarity_search_with_score(query,k=4) #similarity_search(query)
     # st.write(matching_docs)
     # matching_docs
     answer = get_answer(matching_docs,query)

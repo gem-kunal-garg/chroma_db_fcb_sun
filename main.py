@@ -66,7 +66,7 @@ def get_answer(context, question):
     # client = InferenceClient(model="meta-llama/Llama-2-7b-chat-hf", token=HF_TOKEN)
     res = "Response is empty"
     # try:
-    res = client.text_generation(f"Use the following pieces of context to answer the user's question, User's question is:{question} and Context is :{context}.", max_new_tokens=200)
+    res = client.text_generation(f"Use the following pieces of context to answer the user's question, User's question is:{question} and Context is :{context}.", max_new_tokens=2300)
     st.write("context is :",context)
     # st.write("Question is :", question)
     # st.write("result is :", res)
@@ -79,7 +79,7 @@ def get_answer(context, question):
     return res
 
 def hf_llm_qa(query):
-    matching_docs = vectordb.similarity_search_with_score(query,k=4) #similarity_search(query)
+    matching_docs = vectordb.similarity_search_with_score(query,k=2) #similarity_search(query)
     # st.write(matching_docs)
     # matching_docs
     answer = get_answer(matching_docs,query)

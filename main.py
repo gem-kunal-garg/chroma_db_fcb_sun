@@ -9,13 +9,13 @@ from langchain_community.vectorstores import Chroma
 
 
 import os 
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
 # HF_TOKEN = os.getenv("HF_TOKEN")
 # HF_TOKEN = os.getenv("HF_TOKEN")
-# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 embeddings = SentenceTransformerEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")# "sentence-transformers/all-mpnet-base-v2")
 
 
@@ -44,7 +44,7 @@ vectordb = Chroma(persist_directory="./chroma_fcdb", embedding_function=embeddin
 # import os
 ############################################ OpenAI api is used to answer the query based on the final context provided
 
-OPENAI_API_KEY = "sk-proj-9aacoPiOuZDIKBHvUoVqT3BlbkFJNCQL0QV1CSIyEwfvn8n5"
+# OPENAI_API_KEY = "sk-proj-9aacoPiOuZDIKBHvUoVqT3BlbkFJNCQL0QV1CSIyEwfvn8n5"
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 model_name = "gpt-3.5-turbo"

@@ -25,6 +25,10 @@ embeddings = SentenceTransformerEmbeddings(model_name="sentence-transformers/all
 from langchain_openai import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 
+import langchain.globals as lc_globals
+
+lc_globals.set_verbose(False)  # or True if you want verbose output
+
 ################################################ Install if using hf
 # from huggingface_hub import InferenceClient
 # HF_TOKEN = "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"
@@ -62,10 +66,6 @@ llm = ChatOpenAI(model_name=model_name)
 #     answer =  chain.run(input_documents=matching_docs, question=query)
 #     # answer = chain.run(question=query)
 #     return answer
-
-import langchain.globals as lc_globals
-
-lc_globals.set_verbose(False)  # or True if you want verbose output
 
 chain = load_qa_chain(llm, chain_type="stuff")
 

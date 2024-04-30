@@ -73,7 +73,9 @@ def get_answer_openai(question):
     query = f"Use the following pieces of context which are selected from the financial reports of companies (Meta, Apple, Amazon, Alphabet) to answer the user's question, User's question is:{question}."
     matching_docs = vectordb.similarity_search(query, k=2)
     st.write("matching_docs is:", matching_docs)
-    answer = chain.invoke(input_documents=matching_docs, question=query,input=query)
+    input_data = {"question": query, "input_documents": matching_docs}
+    answer = chain.invoke(input=input_data)
+    
     return answer
 
 ############################################ Hugging face api calls are used to answer the query based on the final context provided

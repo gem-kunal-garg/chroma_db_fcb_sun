@@ -76,7 +76,7 @@ def get_answer_openai(question):
     input_data = {"question": query, "input_documents": matching_docs}
     answer = chain.invoke(input=input_data)
     
-    return answer
+    return answer["output_text"]
 
 ############################################ Hugging face api calls are used to answer the query based on the final context provided
 

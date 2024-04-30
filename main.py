@@ -53,16 +53,28 @@ model_name = "gpt-3.5-turbo"
 llm = ChatOpenAI(model_name=model_name)
 
 
-chain = load_qa_chain(llm, chain_type="stuff",verbose=False)
+# chain = load_qa_chain(llm, chain_type="stuff",verbose=False)
+
+# def get_answer_openai(question):
+#     query = f"Use the following pieces of context which are selected from the financial reports of companies (Meta, Apple, Amazon, Alphabet) to answer the user's question, User's question is:{question}."
+#     matching_docs = vectordb.similarity_search(query,k=2)#similarity_search(query)
+#     st.write("matching_docs is :" ,matching_docs)
+#     answer =  chain.run(input_documents=matching_docs, question=query)
+#     # answer = chain.run(question=query)
+#     return answer
+
+import langchain.globals as lc_globals
+
+lc_globals.set_verbose(False)  # or True if you want verbose output
+
+chain = load_qa_chain(llm, chain_type="stuff")
 
 def get_answer_openai(question):
     query = f"Use the following pieces of context which are selected from the financial reports of companies (Meta, Apple, Amazon, Alphabet) to answer the user's question, User's question is:{question}."
-    matching_docs = vectordb.similarity_search(query,k=2)#similarity_search(query)
-    st.write("matching_docs is :" ,matching_docs)
-    answer =  chain.run(input_documents=matching_docs, question=query)
-    # answer = chain.run(question=query)
+    matching_docs = vectordb.similarity_search(query, k=2)
+    st.write("matching_docs is:", matching_docs)
+    answer = chain.invoke(input_documents=matching_docs, question=query)
     return answer
-
 
 ############################################ Hugging face api calls are used to answer the query based on the final context provided
 

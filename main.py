@@ -21,7 +21,8 @@ embeddings = SentenceTransformerEmbeddings(model_name="sentence-transformers/all
 
 ############################################### Install if using openAI
 # from langchain.chat_models import ChatOpenAI
-from langchain_community.chat_models import ChatOpenAI
+# from langchain_community.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 
 ################################################ Install if using hf

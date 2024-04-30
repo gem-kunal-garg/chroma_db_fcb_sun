@@ -53,7 +53,7 @@ model_name = "gpt-3.5-turbo"
 llm = ChatOpenAI(model_name=model_name)
 
 
-chain = load_qa_chain(llm, chain_type="stuff",verbose=True)
+chain = load_qa_chain(llm, chain_type="stuff",verbose=False)
 
 def get_answer_openai(question):
     query = f"Use the following pieces of context which are selected from the financial reports of companies (Meta, Apple, Amazon, Alphabet) to answer the user's question, User's question is:{question}."
